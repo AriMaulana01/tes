@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subplot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Subplot</h1>
+    <img src="data:image/png;base64,{{ plot_url }}">
+    <a href="{{ url_for('index') }}">Back</a>
+</body>
+</html>

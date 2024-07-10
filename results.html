@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clustering Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Clustering Results</h1>
+    <h2>Initial Data</h2>
+    {{ tables[0]|safe }}
+    <h2>Clustered Data</h2>
+    {{ tables[1]|safe }}
+    <a href="{{ url_for('subplot') }}">Subplot</a>
+    <a href="{{ url_for('dendrogram_view') }}">Dendrogram</a>
+    <a href="{{ url_for('map_view') }}">Map</a>
+    <a href="{{ url_for('index') }}">Back</a>
+</body>
+</html>

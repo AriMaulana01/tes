@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <h1>Map</h1>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+    <a href="{{ url_for('index') }}">Back</a>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([3.5952, 98.6722], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var data = {{ df | tojson }};
+        var colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'cyan'];
+
+        data.forEach(function(city) {
+            var latlng = [city.Latitude, city.Longitude];
+            var color = colors[city.Cluster % colors.length];
+
+            var marker = L.circleMarker(latlng, {
+                color: color,
+                radius: 8,
+                fillColor: color,
+                fillOpacity: 0.5
+            }).addTo(map);
+
+            marker.bindPopup("City: " + city.City + "<br>Cluster: " + city.Cluster);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Clustering</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Diabetes Clustering</h1>
+    <form method="post">
+        <label for="max_clusters">Max Clusters:</label>
+        <input type="number" id="max_clusters" name="max_clusters" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
